@@ -156,12 +156,15 @@
 	var sc = '<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%;"><tr><td valign=top width=100% style="font-family: arial, sans-serif; font-size: 28px; line-height: 34px; color: #0076ce; letter-spacing: .02em; padding: 10px 10px 0;" id="">Lorem Ipsum</td></tr><tr><td valign=top width=100% style="font-family: arial, sans-serif; font-size: 14px; line-height: 18px; color: #444444; letter-spacing: .02em; padding: 10px;" id="">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</td></tr></table>';
 	sdk.setSuperContent(sc);
 	
+	function go() {
 	var Headline = document.getElementById('myHeadline').value;
 	var Bodycopy = document.getElementById('myBodycopy').value;
 	var rc = '<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%;"><tr><td valign=top width=100% style="font-family: arial, sans-serif; font-size: 28px; line-height: 34px; color: #0076ce; letter-spacing: .02em; padding: 10px 10px 0;" id="">' + Headline + '</td></tr><tr><td valign=top width=100% style="font-family: arial, sans-serif; font-size: 14px; line-height: 18px; color: #444444; letter-spacing: .02em; padding: 10px;" id="">' + Bodycopy + '</td></tr></table>';
-	function go() {
 		sdk.setContent(rc);
+	console.log(Headline);
+	console.log(Bodycopy);
 	}
+	console.log(go);
 	</script>
 	<aside></aside>
 	<footer></footer>
