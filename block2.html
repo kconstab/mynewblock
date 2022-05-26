@@ -72,45 +72,10 @@
 	</style>
 </head>
 <body>
-	<section>
-		<table class="editor">
-			<tr>
-				<td valign=top width=100% style="font-family: arial, sans-serif; font-size: 32px; color: #0076ce; letter-spacing: .02em;" id="myHeadline">You Should Buy this NOW!</td>
-			</tr>
-			<tr>
-				<td valign=top width=100% style="font-family: arial, sans-serif; font-size: 14px; color: #444444; letter-spacing: .02em; padding-top: 5px;" id="myBodycopy">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</td>
-			</tr>
-		</table>
-		<article>
-			<table>
-				<tr>
-					<td style="width: 150px; padding: 5px 0;">Headline Spacing:</td>
-					<td><input id="newHeadSpace" step=".01" type="number" onchange="resetHeadTracking();"></td>
-				</tr>
-				<tr>
-					<td style="width: 150px; padding: 5px 0;">Body Copy Spacing:</td>
-					<td><input id="newBodySpace" step=".01" type="number" onchange="resetBodyTracking();"></td>
-				</tr>
-			</table>
-		</article>
-	</section>
 	<script>
-    (function() {
-        document.getElementById("newHeadSpace").value = ".02";
-        document.getElementById("newBodySpace").value = ".02";
-    })();
-		function resetHeadTracking() {
-			var interval = document.getElementById("newHeadSpace").value + "em";
-			var toBeTracked = document.getElementById("myHeadline");
-			toBeTracked.style.letterSpacing = interval;
-		}
-		function resetBodyTracking() {
-			var interval = document.getElementById("newBodySpace").value + "em";
-			var toBeTracked = document.getElementById("myBodycopy");
-			toBeTracked.style.letterSpacing = interval;
-		}
-	</script>
-	<aside></aside>
-	<footer></footer>
+	var sdk = new window.sfdc.BlockSDK();
+	var baseImg = '<table width="100%" cellspacing="0" cellpadding="0" role="presentation"><tr><td align="center"><img data-assetid="53607" src="https://image.comm.delltechnologies.com/lib/fe2d117170640478701c75/m/1/8e13cd02-4062-451e-96d7-48d56b9eefe9.png" alt="" width="214" style="display: block; padding: 0px; text-align: center; height: auto; width: 100%; border: 0px;"></td></tr></table>';
+	sdk.setSuperContent(baseImg);
+</script>
 </body>
 </html>
