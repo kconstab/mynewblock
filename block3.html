@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie-edge">
+	<title>Bibbity Bobbity Boo</title>
+	<script type="text/javascript" src="blocksdk.js"></script>
+    <style type="text/css">
+        /* Reset styles*/
+		html, body, div, span, appvar, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, form, label, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
+			margin: 0;
+			padding: 0;
+		}
+		article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+			display: block;
+		}
+		p, li, h1, h2, h3, h4, h5, h6, label, select, legend, input {
+			font-family: Roboto, arial, helvetica, sans-serif;
+		}
+		ol, ul {
+			list-style: none;
+		}
+		blockquote, q {
+			quotes: none;
+		}
+		blockquote:before, blockquote:after, q:before, q:after {
+			content: none;
+		}
+		table {
+			border-spacing: 0;
+		}
+		/** Clear Fix **/
+		.group:before, .group:after {
+			content: "";
+			display: table;
+		}
+		.group:after {
+			clear: both;
+		}
+		.group {
+			zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+		}
+		.clear {
+			clear: both;
+		}
+		body {
+			font-family: arial, sans-serif;
+			font-size: 14px;
+		}
+		section {
+            width: 600px;
+           	margin: 0px auto;
+			background-color: #eeeeee;
+		}
+		article {
+			margin: 20px 10px;
+		}
+		table.editor {
+			background-color: #ffffff;
+			width: 100%;
+		}
+		textarea {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			border: none;
+			outline: none;
+			resize: none;
+		}
+		textarea#myHeadline {
+			font: 28px/34px arial, sans-serif;
+			color: #0076ce;
+		}
+		textarea#myHeadline::placeholder {
+			color: #0076ce;
+			opacity: .5;
+		}
+		textarea#myBodycopy {
+			font: 14px/18px arial, sans-serif;
+			color: #444444;
+		}
+		textarea#myBodycopy::placeholder {
+			color: #444444;
+			opacity: .5;
+		}
+		input.spacing {
+			width: 50px;
+		}
+      @media only screen and (max-width: 599px) {
+		section {
+            width: 100%;
+		}
+	  }
+	</style>
+</head>
+<body>
+	<section>
+		<div style="padding: 20px;">
+		<table class="editor">
+			<tr>
+				<td valign=top width=100% style="font-family: arial, sans-serif; font-size: 32px; color: #0076ce; letter-spacing: .02em; padding: 10px 10px 0;" id=""><textarea id="myHeadline" name="headline" placeholder="Lorem Ipsum" style="" rows="1" onchange="sdk.setContent(rc);"></textarea></td>
+			</tr>
+			<tr>
+				<td valign=top width=100% style="font-family: arial, sans-serif; font-size: 14px; color: #444444; letter-spacing: .02em; padding: 5px 10px 10px;" id=""><textarea id="myBodycopy" name="Bodycopy" placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." style="" rows="1" onchange="sdk.setContent(rc);></textarea></td>
+			</tr>
+		</table>
+		<article>
+			<table>
+				<tr>
+					<td style="width: 150px; padding: 5px 0;">Headline Spacing:</td>
+					<td><input class="spacing" id="newHeadSpace" step=".01" type="number" onchange="resetHeadTracking();"></td>
+				</tr>
+				<tr>
+					<td style="width: 150px; padding: 5px 0;">Body Copy Spacing:</td>
+					<td><input class="spacing" id="newBodySpace" step=".01" type="number" onchange="resetBodyTracking();"></td>
+				</tr>
+			</table>
+			</div>
+		</article>
+	</section>
+	<script>
+    (function() {
+        document.getElementById("newHeadSpace").value = ".02";
+        document.getElementById("newBodySpace").value = ".02";
+    })();
+		function resetHeadTracking() {
+			var interval = document.getElementById("newHeadSpace").value + "em";
+			var toBeTracked = document.getElementById("myHeadline");
+			toBeTracked.style.letterSpacing = interval;
+		}
+		function resetBodyTracking() {
+			var interval = document.getElementById("newBodySpace").value + "em";
+			var toBeTracked = document.getElementById("myBodycopy");
+			toBeTracked.style.letterSpacing = interval;
+		}
+
+	const tx = document.getElementsByTagName("textarea");
+	for (let i = 0; i < tx.length; i++) {
+	  tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+	  tx[i].addEventListener("input", OnInput, false);
+	}
+	
+	function OnInput() {
+	  this.style.height = "auto";
+	  this.style.height = (this.scrollHeight) + "px";
+	}
+	
+	
+	var sdk = new window.sfdc.BlockSDK();
+	
+	var sc = '<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%;"><tr><td valign=top width=100% style="font-family: arial, sans-serif; font-size: 28px; line-height: 34px; color: #0076ce; letter-spacing: .02em; padding: 10px 10px 0;" id="">Lorem Ipsum</td></tr><tr><td valign=top width=100% style="font-family: arial, sans-serif; font-size: 14px; line-height: 18px; color: #444444; letter-spacing: .02em; padding: 10px;" id="">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</td></tr></table>';
+	sdk.setSuperContent(sc);
+	
+	var Headline = document.getElementById('myHeadline').value;
+	var Headline = document.getElementById('myBodycopy').value;
+	var rc = '<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%;"><tr><td valign=top width=100% style="font-family: arial, sans-serif; font-size: 28px; line-height: 34px; color: #0076ce; letter-spacing: .02em; padding: 10px 10px 0;" id="">' + Headline + '</td></tr><tr><td valign=top width=100% style="font-family: arial, sans-serif; font-size: 14px; line-height: 18px; color: #444444; letter-spacing: .02em; padding: 10px;" id="">' + Bodycopy + '</td></tr></table>';
+	
+	
+	</script>
+	<aside></aside>
+	<footer></footer>
+</body>
+</html>
