@@ -113,7 +113,7 @@
 			<table>
 				<tr>
 					<td style="width: 150px; padding: 5px 0;">Headline Spacing:</td>
-					<td><input class="spacing" id="newHeadSpace" step=".01" type="number" onchange="resetHeadTracking(); go();"></td>
+					<td><input class="spacing" id="newHeadSpace" step=".01" type="number" onchange="resetHeadTracking();"></td>
 				</tr>
 				<tr>
 					<td style="width: 150px; padding: 5px 0;">Body Copy Spacing:</td>
@@ -159,7 +159,7 @@
 	function go() {
 	var Headline = document.getElementById('myHeadline').value;
 	var Bodycopy = document.getElementById('myBodycopy').value;
-	var rc = '<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%;"><tr><td valign=top width=100% style="font-family: arial, sans-serif; font-size: 28px; line-height: 34px; color: #0076ce; letter-spacing: .02em; padding: 10px 10px 0;" id="">' + Headline + '</td></tr><tr><td valign=top width=100% style="font-family: arial, sans-serif; font-size: 14px; line-height: 18px; color: #444444; letter-spacing: .02em; padding: 10px;" id="">' + Bodycopy + '</td></tr></table>';
+	var rc = '<table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="background-color: transparent; min-width: 100%;"><tr><td valign=top width=100% style="font-family: arial, sans-serif; font-size: 28px; line-height: 34px; color: #0076ce; letter-spacing:' + interval + 'em; padding: 10px 10px 0;" id="">' + Headline + '</td></tr><tr><td valign=top width=100% style="font-family: arial, sans-serif; font-size: 14px; line-height: 18px; color: #444444; letter-spacing: .02em; padding: 10px;" id="">' + Bodycopy + '</td></tr></table>';
 		sdk.setContent(rc);
 	}
 	</script>
